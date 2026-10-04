@@ -73,7 +73,7 @@
 
 **CentOS 7:**
 
-`docker run -d --name centos7 --privileged centos:7 sleep infinity`
+`docker run -d --name centos7 --privileged rockylinux:9 sleep infinity`
 
 **Ubuntu:**
 
