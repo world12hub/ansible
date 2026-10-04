@@ -66,6 +66,23 @@
 <img width="411" height="92" alt="image" src="https://github.com/user-attachments/assets/6207d46e-94be-4c6c-9990-e314c2db6f99" />
 
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
+
+**Ответ:**
+
+Подняты контейнеры:
+
+**CentOS 7:**
+
+`docker run -d --name centos7 --privileged centos:7 sleep infinity`
+
+**Ubuntu:**
+
+`docker run -d --name ubuntu --privileged ubuntu:latest sleep infinity`
+
+**Скриншот:**
+
+<img width="878" height="75" alt="image" src="https://github.com/user-attachments/assets/c693bc79-cc86-4834-8930-7fb10bfdc850" />
+
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
 5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
 6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
