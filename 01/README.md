@@ -97,8 +97,25 @@
 
 
 5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
+
+**Ответ:**
+
+Изменил переменные.
+
 6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
+
+**Ответ:**
+
+Выполнена команда `ansible-playbook site.yml -i inventory/prod.yml`
+
+**Скриншот:**
+
+<img width="1231" height="575" alt="image" src="https://github.com/user-attachments/assets/9ee0536f-37f2-4488-b1b4-a41530bc75d1" />
+
+
 7. При помощи `ansible-vault` зашифруйте факты в `group_vars/deb` и `group_vars/el` с паролем `netology`.
+
+
 8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
 9. Посмотрите при помощи `ansib le-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
 10. В `prod.yml` добавьте новую группу хостов с именем  `local`, в ней разместите localhost с необходимым типом подключения.
