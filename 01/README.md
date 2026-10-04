@@ -1,4 +1,4 @@
-# Домашнее задание к занятию 1 «Введение в Ansible»
+<img width="411" height="92" alt="image" src="https://github.com/user-attachments/assets/c81530e4-a809-4908-98e0-f55db0b52b48" /># Домашнее задание к занятию 1 «Введение в Ansible»
 
 ## Подготовка к выполнению
 
@@ -56,6 +56,15 @@
 
 
 2. Найдите файл с переменными (group_vars), в котором задаётся найденное в первом пункте значение, и поменяйте его на `all default fact`.
+
+**Ответ:**
+
+В файле group_vars/examp.yml внесены изменения в переменную `some_fact: all default fact`
+
+**Скриншот:**
+
+<img width="411" height="92" alt="image" src="https://github.com/user-attachments/assets/6207d46e-94be-4c6c-9990-e314c2db6f99" />
+
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
 5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
