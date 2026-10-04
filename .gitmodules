@@ -1,0 +1,3 @@
+[submodule "01"]
+	path = 01
+	url = https://github.com/world12hub/08-ansible-01-base_02.25.git
