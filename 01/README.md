@@ -33,6 +33,28 @@
 ## Основная часть
 
 1. Попробуйте запустить playbook на окружении из `test.yml`, зафиксируйте значение, которое имеет факт `some_fact` для указанного хоста при выполнении playbook.
+
+**Ответ:**
+
+Выполнены следующие команды:
+
+1.1. Провека соединения:
+
+`ansible -i inventory/test.yml inside -m ping`
+
+**Скриншот:**
+
+<img width="1263" height="178" alt="image" src="https://github.com/user-attachments/assets/d9104482-3dcc-4232-b0b2-3136f6cc7de1" />
+
+1.2. Выполнение playbook^
+
+`ansible-playbook site.yml -i inventory/test.yml`
+
+**Скриншот:**
+
+<img width="1112" height="399" alt="image" src="https://github.com/user-attachments/assets/40e21c2e-48d4-4e16-bd07-88afab3d07e8" />
+
+
 2. Найдите файл с переменными (group_vars), в котором задаётся найденное в первом пункте значение, и поменяйте его на `all default fact`.
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
