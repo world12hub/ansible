@@ -128,6 +128,15 @@ ansible-vault encrypt group_vars/el/examp.yml`
 
 
 8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
+
+**Ответ:**
+
+Выполнена команда `ansible-playbook site.yml -i inventory/prod.yml  --ask-vault-pass`
+
+**Скриншот:**
+
+<img width="1243" height="577" alt="image" src="https://github.com/user-attachments/assets/ffdf5f30-cac4-40c1-bc50-69f55d0949b7" />
+
 9. Посмотрите при помощи `ansib le-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
 10. В `prod.yml` добавьте новую группу хостов с именем  `local`, в ней разместите localhost с необходимым типом подключения.
 11. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь, что факты `some_fact` для каждого из хостов определены из верных `group_vars`.
