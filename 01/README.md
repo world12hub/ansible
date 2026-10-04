@@ -1,4 +1,4 @@
-<img width="411" height="92" alt="image" src="https://github.com/user-attachments/assets/c81530e4-a809-4908-98e0-f55db0b52b48" /># Домашнее задание к занятию 1 «Введение в Ansible»
+# Домашнее задание к занятию 1 «Введение в Ansible»
 
 ## Подготовка к выполнению
 
