@@ -163,8 +163,26 @@ ansible-vault encrypt group_vars/el/examp.yml`
 <img width="395" height="297" alt="image" src="https://github.com/user-attachments/assets/fb9176a5-52ef-4229-aa2b-bd23a7956d5a" />
 
 11. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь, что факты `some_fact` для каждого из хостов определены из верных `group_vars`.
+
+**Ответ:**
+
+Выполнена команда `ansible-playbook site.yml -i inventory/prod.yml  --ask-vault-pass`
+
+**Скриншот:**
+
+<img width="1225" height="739" alt="image" src="https://github.com/user-attachments/assets/9b521fb7-170f-4efa-a9ae-9ab34a9da6e5" />
+
 12. Заполните `README.md` ответами на вопросы. Сделайте `git push` в ветку `master`. В ответе отправьте ссылку на ваш открытый репозиторий с изменённым `playbook` и заполненным `README.md`.
+
+**Ответ:**
+
+Ссылка на [README.md](https://github.com/world12hub/ansible/edit/main/01/README.md)
+
 13. Предоставьте скриншоты результатов запуска команд.
+
+**Ответ:**
+
+Скриншоты и команды в каждом задании. 
 
 ## Необязательная часть
 
