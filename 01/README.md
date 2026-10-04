@@ -115,6 +115,17 @@
 
 7. При помощи `ansible-vault` зашифруйте факты в `group_vars/deb` и `group_vars/el` с паролем `netology`.
 
+**Ответ:**
+
+Выполнены команды:
+
+`ansible-vault encrypt group_vars/deb/examp.yml 
+ansible-vault encrypt group_vars/el/examp.yml`
+
+**Скриншот:**
+
+<img width="855" height="143" alt="image" src="https://github.com/user-attachments/assets/5c4eac12-d94b-4545-a2b2-d3b19d0193dd" />
+
 
 8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
 9. Посмотрите при помощи `ansib le-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
