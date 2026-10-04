@@ -46,7 +46,7 @@
 
 <img width="1263" height="178" alt="image" src="https://github.com/user-attachments/assets/d9104482-3dcc-4232-b0b2-3136f6cc7de1" />
 
-1.2. Выполнение playbook^
+1.2. Выполнение **playbook**
 
 `ansible-playbook site.yml -i inventory/test.yml`
 
