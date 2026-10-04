@@ -128,7 +128,30 @@ ansible-vault encrypt group_vars/el/examp.yml`
 
 
 8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
+
+**Ответ:**
+
+Выполнена команда `ansible-playbook site.yml -i inventory/prod.yml  --ask-vault-pass`
+
+**Скриншот:**
+
+<img width="1243" height="577" alt="image" src="https://github.com/user-attachments/assets/ffdf5f30-cac4-40c1-bc50-69f55d0949b7" />
+
 9. Посмотрите при помощи `ansib le-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
+
+**Ответ:**
+
+Команда для просмотра списка плагинов:
+
+`ansible-doc -t connection -l`
+
+**Скриншот:**
+
+<img width="1138" height="568" alt="image" src="https://github.com/user-attachments/assets/604a46a9-8358-4a0e-9b4b-092856472f20" />
+
+Выбрал  `ansible.builtin.local          execute on controller` 
+
+
 10. В `prod.yml` добавьте новую группу хостов с именем  `local`, в ней разместите localhost с необходимым типом подключения.
 11. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь, что факты `some_fact` для каждого из хостов определены из верных `group_vars`.
 12. Заполните `README.md` ответами на вопросы. Сделайте `git push` в ветку `master`. В ответе отправьте ссылку на ваш открытый репозиторий с изменённым `playbook` и заполненным `README.md`.
