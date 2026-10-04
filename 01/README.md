@@ -119,7 +119,8 @@
 
 Выполнены команды:
 
-`ansible-vault encrypt group_vars/deb/examp.yml 
+`ansible-vault encrypt group_vars/deb/examp.yml
+
 ansible-vault encrypt group_vars/el/examp.yml`
 
 **Скриншот:**
