@@ -93,7 +93,8 @@
 
 **Скриншот:**
 
-![Uploading image.png…]()
+<img width="1265" height="570" alt="image" src="https://github.com/user-attachments/assets/f4f77df3-1d0f-42f8-ab2e-8d78512af34c" />
+
 
 5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
 6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
