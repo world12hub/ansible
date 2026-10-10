@@ -62,6 +62,10 @@
 9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги. Пример качественной документации ansible playbook по [ссылке](https://github.com/opensearch-project/ansible-playbook). Так же приложите скриншоты выполнения заданий №5-8
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-02-playbook` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
+### Ответ
+
+Репозиторий с тегом [08-ansible-02-playbook](https://github.com/world12hub/ansible/releases/tag/08-ansible-02-playbook) 
+
 ---
 
 ### Как оформить решение задания
