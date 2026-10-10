@@ -36,7 +36,21 @@
 
 
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
+
+### Ответ
+
+Выполнена команда `ansible-playbook -i ./inventory/prod.yml site.yml --check`
+
+<img width="1023" height="113" alt="image" src="https://github.com/user-attachments/assets/8a8753ed-2a76-495f-a6c4-10be78ad0157" />
+
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
+
+### Ответ
+
+Выполнена команда `ansible-playbook -i ./inventory/prod.yml site.yml --diff`
+
+<img width="942" height="93" alt="image" src="https://github.com/user-attachments/assets/11a0ba1c-0491-4ef6-9d83-b427daf3cdfe" />
+
 8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
 9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги. Пример качественной документации ansible playbook по [ссылке](https://github.com/opensearch-project/ansible-playbook). Так же приложите скриншоты выполнения заданий №5-8
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-02-playbook` на фиксирующий коммит, в ответ предоставьте ссылку на него.
