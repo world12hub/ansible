@@ -9,11 +9,13 @@
         state: restarted
       tags: [clickhouse, clickhouse-service]
   tasks:
-    - block:
+    - name: Install clickhouse
+      block:
         - name: Get clickhouse distrib
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
             dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+            mode: "0644"
           with_items: "{{ clickhouse_packages }}"
           tags: [clickhouse, clickhouse-install]
       rescue:
@@ -21,6 +23,7 @@
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
             dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+            mode: "0644"
           tags: [clickhouse, clickhouse-install]
     - name: Install clickhouse packages
       become: true
@@ -33,20 +36,19 @@
       tags: [clickhouse, clickhouse-install]
 
     - name: Flush handlers
-      meta: flush_handlers
+      ansible.builtin.meta: flush_handlers
       tags: [clickhouse, clickhouse-service]
 
     - name: Create database
       ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
       register: create_db
-      failed_when: create_db.rc != 0 and create_db.rc !=82
+      failed_when: create_db.rc != 0 and create_db.rc != 82
       changed_when: create_db.rc == 0
       tags: [clickhouse, clickhouse-config]
 
-
-- name : Install Vector
+- name: Install Vector
   hosts: clickhouse
-  handers:
+  handlers:
     - name: Restart vector service
       become: true
       ansible.builtin.service:
@@ -61,7 +63,7 @@
         dest: "./vector-{{ vector_version }}.rpm"
         mode: "0644"
       tags: [vector, vector-install]
-    
+
     - name: Install vector package
       become: true
       ansible.builtin.yum:
@@ -69,7 +71,7 @@
         disable_gpg_check: true
       notify: Restart vector service
       tags: [vector, vector-install]
-      
+
     - name: Deploy vector config
       become: true
       ansible.builtin.template:
@@ -82,5 +84,5 @@
       tags: [vector, vector-config]
 
     - name: Flush handlers
-      meta: flush_handlers
+      ansible.builtin.meta: flush_handlers
       tags: [vector, vector-service]
