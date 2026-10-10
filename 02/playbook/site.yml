@@ -32,6 +32,7 @@
           - clickhouse-common-static-{{ clickhouse_version }}.rpm
           - clickhouse-client-{{ clickhouse_version }}.rpm
           - clickhouse-server-{{ clickhouse_version }}.rpm
+        disable_gpg_check: true
       notify: Start clickhouse service
       tags: [clickhouse, clickhouse-install]
 
