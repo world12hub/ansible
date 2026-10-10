@@ -1,0 +1,26 @@
+# Vector configuration
+# Managed by Ansible — do not edit manually
+# Host: {{ inventory_hostname }}
+
+data_dir = "/var/lib/vector"
+
+[sources.journald_logs]
+type = "journald"
+read_from = "beginning"
+
+[sources.app_logs]
+type = "file"
+include = ["/var/log/*.log"]
+ignore_older_secs = 86400
+
+[sinks.stdout]
+type = "console"
+inputs = ["journald_logs", "app_logs"]
+encoding.codec = "json"
+
+[sinks.clickhouse]
+type = "clickhouse"
+inputs = ["app_logs"]
+endpoint = "http://127.0.0.1:8123"
+database = "logs"
+table = "{{ vector_clickhouse_table | default('events') }}"
