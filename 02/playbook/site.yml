@@ -19,7 +19,7 @@
           with_items: "{{ clickhouse_packages }}"
           tags: [clickhouse, clickhouse-install]
       rescue:
-        - name: Get clickhouse distrib
+        - name: Get clickhouse distrib (fallback)
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
             dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
