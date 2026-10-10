@@ -13,7 +13,7 @@
 
 ### Ответ
 
-Подготовлен inventory-файл [prod.yml](https://github.com/world12hub/ansible/edit/main/02/playbook/inventory/ptod.yml).
+Подготовлен inventory-файл [prod.yml](https://github.com/world12hub/ansible/blob/main/02/playbook/inventory/prod.yml).
 
 2. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает [vector](https://vector.dev). Конфигурация vector должна деплоиться через template файл jinja2. От вас не требуется использовать все возможности шаблонизатора, просто вставьте стандартный конфиг в template файл. Информация по шаблонам по [ссылке](https://www.dmosk.ru/instruktions.php?object=ansible-nginx-install). не забудьте сделать handler на перезапуск vector в случае изменения конфигурации!
 3. При создании tasks рекомендую использовать модули: `get_url`, `template`, `unarchive`, `file`.
