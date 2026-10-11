@@ -19,7 +19,7 @@ module "sg" {
 module "clickhouse" {
   source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=main"
   env_name       = var.env_name
-  instance_name  = var.instance_name
+  instance_name  = var.instance_name_clickhouse
   instance_count = var.instance_count
   
   subnet_zones   = [var.zone]
@@ -50,7 +50,7 @@ module "clickhouse" {
 module "vector" {
   source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=main"
   env_name       = var.env_name
-  instance_name  = var.instance_name
+  instance_name  = var.instance_name_vector
   instance_count = var.instance_count
   
   subnet_zones   = [var.zone]
@@ -81,7 +81,7 @@ module "vector" {
 module "lighthouse" {
   source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=main"
   env_name       = var.env_name
-  instance_name  = var.instance_name
+  instance_name  = var.instance_name_vector
   instance_count = var.instance_count
   
   subnet_zones   = [var.zone]

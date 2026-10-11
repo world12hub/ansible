@@ -1,37 +1,36 @@
-output "web_public_ip" {
-  value       = module.web_vm.external_ip_address[0]
-  description = "Публичный IP web-ВМ (приложение)"
+# --- IP трёх ВМ ---
+output "clickhouse_public_ip" {
+  value       = module.clickhouse.external_ip_address[0]
+  description = "Публичный IP ClickHouse"
 }
 
-output "web_internal_ip" {
-  value       = module.web_vm.internal_ip_address[0]
-  description = "Внутренний IP web-ВМ"
+output "vector_public_ip" {
+  value       = module.vector.external_ip_address[0]
+  description = "Публичный IP Vector"
 }
 
-output "web_fqdn" {
-  value       = module.web_vm.fqdn[0]
-  description = "FQDN web-ВМ"
+output "lighthouse_public_ip" {
+  value       = module.lighthouse.external_ip_address[0]
+  description = "Публичный IP Lighthouse"
 }
 
-output "mysql_cluster_id" {
-  value       = module.mysql.cluster_id
-  description = "ID кластера MySQL"
+output "clickhouse_internal_ip" {
+  value       = module.clickhouse.internal_ip_address[0]
+  description = "Внутренний IP ClickHouse"
 }
 
-# output "mysql_host_fqdn" {
-#   value = module.mysql.host_fqdn
-# }
+output "vector_internal_ip" {
+  value       = module.vector.internal_ip_address[0]
+  description = "Внутренний IP Vector"
+}
 
+output "lighthouse_internal_ip" {
+  value       = module.lighthouse.internal_ip_address[0]
+  description = "Внутренний IP Lighthouse"
+}
+
+# --- Container Registry ---
 output "registry_id" {
   value       = module.container_registry.registry_id
   description = "ID Container Registry"
-}
-
-# output "cr_repository_name" {
-#   value = module.container_registry.repository_name
-# }
-
-output "mysql_host_fqdn" {
-  value       = module.mysql.host_fqdn
-  description = "FQDN хоста MySQL для подключения приложения"
 }
