@@ -1,41 +1,40 @@
 module "vpc" {
-  source = "./modules/vpc"
+  source = "https://github.com/world12hub/ter-homeworks/tree/c773f2b59bf4dcde0e15d93319117458bdfa68fc/diploma/modules/vpc"
 
   vpc_name       = "main-network"
   zone           = var.zone
   v4_cidr_blocks = var.vpc_cidr_blocks
 }
 
-module "web_sg" {
-  source = "./modules/sg"
+module "sg" {
+  source = "https://github.com/world12hub/ter-homeworks/tree/c773f2b59bf4dcde0e15d93319117458bdfa68fc/diploma/modules/sg"
 
-  sg_name    = var.web_sg_name
+  sg_name    = var.sg_name
   network_id = module.vpc.vpc_id
 
-  security_group_ingress = var.web_sg_ingress
+  security_group_ingress = var.sg_ingress
 }
 
-# security_group_egress не указан — используется default (ANY → 0.0.0.0/0)
 
-module "web_vm" {
-  source         = "./modules/vm"
+module "vm_clickhouse" {
+  source         = "https://github.com/world12hub/ter-homeworks/tree/c773f2b59bf4dcde0e15d93319117458bdfa68fc/diploma/modules/vm"
   env_name       = var.env_name
-  instance_name  = var.web_instance_name
-  instance_count = var.web_instance_count
+  instance_name  = var.instance_name
+  instance_count = var.instance_count
   
   subnet_zones   = [var.zone]
   subnet_ids     = [module.vpc.subnet_id]
 
-  image_family   = var.web_image_family
-  public_ip      = var.web_public_ip
-  platform       = var.web_platform
-  instance_cores = var.web_instance_cores
-  instance_memory = var.web_instance_memory
-  instance_core_fraction = var.web_instance_core_fraction
-  boot_disk_type         = var.web_boot_disk_type
-  boot_disk_size         = var.web_boot_disk_size
+  image_family   = var.image_family
+  public_ip      = var.public_ip
+  platform       = var.platform
+  instance_cores = var.instance_cores
+  instance_memory = var.instance_memory
+  instance_core_fraction = var.instance_core_fraction
+  boot_disk_type         = var.boot_disk_type
+  boot_disk_size         = var.boot_disk_size
 
-  security_group_ids = [module.web_sg.sg_id]
+  security_group_ids = [module.sg.sg_id]
 
 
   metadata = {
@@ -43,38 +42,9 @@ module "web_vm" {
     serial-port-enable = var.serial_port_enable
   }
 
-  labels = var.web_labels
-  description = var.web_description
+  labels = var.labels
+  description = var.description
   
-}
-
-
-
-module "mysql_sg" {
-  source = "./modules/sg"
-
-  sg_name    = var.mysql_sg_name
-  network_id = module.vpc.vpc_id
-
-  security_group_ingress = var.mysql_sg_ingress
- 
-}
-
-
-module "mysql" {
-  source = "./modules/mysql"
-
-  name               = var.mysql_name
-  network_id         = module.vpc.vpc_id
-  subnet_id          = module.vpc.subnet_id
-  zone               = var.zone
-  environment        = var.mysql_environment
-  resource_preset_id = var.mysql_resource_preset_id
-  disk_type_id       = var.mysql_disk_type_id
-  disk_size          = var.mysql_disk_size
-  db_password        = var.db_password
-
-  security_group_ids = [module.mysql_sg.sg_id]
 }
 
 module "container_registry" {

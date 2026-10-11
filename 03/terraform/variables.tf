@@ -31,10 +31,6 @@ variable "username" {
   default     = "ubuntu"
 }
 
-variable "db_password" {
-  type        = string
-  sensitive   = true
-}
 
 variable "ssh_public_key" {
   type    = string
@@ -56,12 +52,12 @@ variable "vpc_cidr_blocks" {
   default = ["10.0.1.0/24"]
 }
 
-variable "web_sg_name" {
+variable "sg_name" {
   type    = string
-  default = "web-sg"
+  default = "vm_sg"
 }
 
-variable "web_sg_ingress" {
+variable "sg_ingress" {
   type = list(object({
     protocol       = string
     description    = string
@@ -95,52 +91,52 @@ variable "env_name" {
   default = "dev"
 }
 
-variable "web_instance_name" {
+variable "instance_name" {
   type    = string
   default = "web"
 }
 
-variable "web_instance_count" {
+variable "instance_count" {
   type    = number
   default = 1
 }
 
-variable "web_image_family" {
+variable "image_family" {
   type    = string
   default = "ubuntu-2004-lts"
 }
 
-variable "web_public_ip" {
+variable "public_ip" {
   type    = bool
   default = true
 }
 
-variable "web_platform" {
+variable "platform" {
   type    = string
   default = "standard-v3"
 }
 
-variable "web_instance_cores" {
+variable "instance_cores" {
   type    = number
   default = 2
 }
 
-variable "web_instance_memory" {
+variable "instance_memory" {
   type    = number
   default = 2
 }
 
-variable "web_instance_core_fraction" {
+variable "instance_core_fraction" {
   type    = number
   default = 20
 }
 
-variable "web_boot_disk_type" {
+variable "boot_disk_type" {
   type    = string
   default = "network-hdd"
 }
 
-variable "web_boot_disk_size" {
+variable "boot_disk_size" {
   type    = number
   default = 10
 }
@@ -150,7 +146,7 @@ variable "serial_port_enable" {
   default = "0"
 }
 
-variable "web_labels" {
+variable "labels" {
   type = map(string)
   default = {
     owner   = "s-kanyugin"
@@ -158,56 +154,9 @@ variable "web_labels" {
   }
 }
 
-variable "web_description" {
+variable "description" {
   type    = string
-  default = "Web VM for learning project"
-}
-
-variable "mysql_sg_name" {
-  type    = string
-  default = "mysql-sg"
-}
-
-variable "mysql_sg_ingress" {
-  type = list(object({
-    protocol       = string
-    description    = string
-    v4_cidr_blocks = list(string)
-    port           = number
-  }))
-  default = [
-    {
-      protocol       = "TCP"
-      description    = "MySQL from web subnet"
-      v4_cidr_blocks = ["10.0.1.0/24"]
-      port           = 3306
-    },
-  ]
-}
-
-variable "mysql_name" {
-  type    = string
-  default = "mysql-cluster"
-}
-
-variable "mysql_environment" {
-  type    = string
-  default = "PRESTABLE"
-}
-
-variable "mysql_resource_preset_id" {
-  type    = string
-  default = "b1.medium"
-}
-
-variable "mysql_disk_type_id" {
-  type    = string
-  default = "network-hdd"
-}
-
-variable "mysql_disk_size" {
-  type    = number
-  default = 10
+  default = "VM for learning project"
 }
 
 variable "registry_name" {
