@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vpc?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
+  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vpc?ref=main"
 
   vpc_name       = "main-network"
   zone           = var.zone
@@ -7,7 +7,7 @@ module "vpc" {
 }
 
 module "sg" {
-  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/sg?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
+  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/sg?ref=main"
 
   sg_name    = var.sg_name
   network_id = module.vpc.vpc_id
@@ -17,7 +17,7 @@ module "sg" {
 
 
 module "clickhouse" {
-  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
+  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=main"
   env_name       = var.env_name
   instance_name  = var.instance_name
   instance_count = var.instance_count
@@ -48,7 +48,7 @@ module "clickhouse" {
 }
 
 module "vector" {
-  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
+  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=main"
   env_name       = var.env_name
   instance_name  = var.instance_name
   instance_count = var.instance_count
@@ -79,7 +79,7 @@ module "vector" {
 }
 
 module "lighthouse" {
-  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
+  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=main"
   env_name       = var.env_name
   instance_name  = var.instance_name
   instance_count = var.instance_count
@@ -110,7 +110,7 @@ module "lighthouse" {
 }
 
 module "container_registry" {
-  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/container_registry?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
+  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/container_registry?ref=main"
 
   name = var.registry_name
 }
