@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "https://github.com/world12hub/ter-homeworks/tree/c773f2b59bf4dcde0e15d93319117458bdfa68fc/diploma/modules/vpc"
+  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vpc?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
 
   vpc_name       = "main-network"
   zone           = var.zone
@@ -7,7 +7,7 @@ module "vpc" {
 }
 
 module "sg" {
-  source = "https://github.com/world12hub/ter-homeworks/tree/c773f2b59bf4dcde0e15d93319117458bdfa68fc/diploma/modules/sg"
+  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/sg?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
 
   sg_name    = var.sg_name
   network_id = module.vpc.vpc_id
@@ -16,8 +16,70 @@ module "sg" {
 }
 
 
-module "vm_clickhouse" {
-  source         = "https://github.com/world12hub/ter-homeworks/tree/c773f2b59bf4dcde0e15d93319117458bdfa68fc/diploma/modules/vm"
+module "clickhouse" {
+  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
+  env_name       = var.env_name
+  instance_name  = var.instance_name
+  instance_count = var.instance_count
+  
+  subnet_zones   = [var.zone]
+  subnet_ids     = [module.vpc.subnet_id]
+
+  image_family   = var.image_family
+  public_ip      = var.public_ip
+  platform       = var.platform
+  instance_cores = var.instance_cores
+  instance_memory = var.instance_memory
+  instance_core_fraction = var.instance_core_fraction
+  boot_disk_type         = var.boot_disk_type
+  boot_disk_size         = var.boot_disk_size
+
+  security_group_ids = [module.sg.sg_id]
+
+
+  metadata = {
+    user-data          = data.template_file.cloudinit.rendered
+    serial-port-enable = var.serial_port_enable
+  }
+
+  labels = var.labels
+  description = var.description
+  
+}
+
+module "vector" {
+  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
+  env_name       = var.env_name
+  instance_name  = var.instance_name
+  instance_count = var.instance_count
+  
+  subnet_zones   = [var.zone]
+  subnet_ids     = [module.vpc.subnet_id]
+
+  image_family   = var.image_family
+  public_ip      = var.public_ip
+  platform       = var.platform
+  instance_cores = var.instance_cores
+  instance_memory = var.instance_memory
+  instance_core_fraction = var.instance_core_fraction
+  boot_disk_type         = var.boot_disk_type
+  boot_disk_size         = var.boot_disk_size
+
+  security_group_ids = [module.sg.sg_id]
+
+
+  metadata = {
+    user-data          = data.template_file.cloudinit.rendered
+    serial-port-enable = var.serial_port_enable
+  }
+
+  labels = var.labels
+  description = var.description
+  
+}
+
+module "lighthouse" {
+  source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
   env_name       = var.env_name
   instance_name  = var.instance_name
   instance_count = var.instance_count
@@ -48,7 +110,7 @@ module "vm_clickhouse" {
 }
 
 module "container_registry" {
-  source = "./modules/container_registry"
+  source = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/container_registry?ref=c773f2b59bf4dcde0e15d93319117458bdfa68fc"
 
   name = var.registry_name
 }

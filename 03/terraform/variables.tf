@@ -91,9 +91,19 @@ variable "env_name" {
   default = "dev"
 }
 
-variable "instance_name" {
+variable "instance_name_clickhouse" {
   type    = string
-  default = "web"
+  default = "clickhouse"
+}
+
+variable "instance_name_vector" {
+  type    = string
+  default = "vector"
+}
+
+variable "instance_name_lighthouse" {
+  type    = string
+  default = "lighthouse"
 }
 
 variable "instance_count" {
