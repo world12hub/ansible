@@ -13,6 +13,11 @@
 ## Основная часть
 
 1. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает LightHouse.
+
+### Ответ:
+
+В playbook [site.yml](https://github.com/world12hub/ansible/edit/main/03/playbook/site.yml) добавлен play **LightHouse**.
+
 2. При создании tasks рекомендую использовать модули: `get_url`, `template`, `yum`, `apt`.
 3. Tasks должны: скачать статику LightHouse, установить Nginx или любой другой веб-сервер, настроить его конфиг для открытия LightHouse, запустить веб-сервер.
 4. Подготовьте свой inventory-файл `prod.yml`.
