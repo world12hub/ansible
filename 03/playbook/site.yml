@@ -1,0 +1,154 @@
+---
+
+# Clickhouse
+
+- name: Install Clickhouse
+  hosts: clickhouse
+  handlers:
+    - name: Start clickhouse service
+      become: true
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
+      tags: [clickhouse, clickhouse-service]
+  tasks:
+    - name: Install clickhouse
+      block:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
+            dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+            mode: "0644"
+          with_items: "{{ clickhouse_packages }}"
+          tags: [clickhouse, clickhouse-install]
+      rescue:
+        - name: Get clickhouse distrib (fallback)
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
+            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+            mode: "0644"
+          tags: [clickhouse, clickhouse-install]
+    - name: Install clickhouse packages
+      become: true
+      ansible.builtin.yum:
+        name:
+          - clickhouse-common-static-{{ clickhouse_version }}.rpm
+          - clickhouse-client-{{ clickhouse_version }}.rpm
+          - clickhouse-server-{{ clickhouse_version }}.rpm
+        disable_gpg_check: true
+      notify: Start clickhouse service
+      tags: [clickhouse, clickhouse-install]
+
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
+      tags: [clickhouse, clickhouse-service]
+
+    - name: Create database
+      ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
+      register: create_db
+      failed_when: create_db.rc != 0 and create_db.rc != 82
+      changed_when: create_db.rc == 0
+      tags: [clickhouse, clickhouse-config]
+
+
+# Vector
+
+- name: Install Vector
+  hosts: vector
+  handlers:
+    - name: Restart vector service
+      become: true
+      ansible.builtin.service:
+        name: vector
+        state: restarted
+      tags: [vector, vector-service]
+
+  tasks:
+    - name: Get vector distrib
+      ansible.builtin.get_url:
+        url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.{{ ansible_architecture }}.rpm"
+        dest: "./vector-{{ vector_version }}.rpm"
+        mode: "0644"
+      tags: [vector, vector-install]
+
+    - name: Install vector package
+      become: true
+      ansible.builtin.yum:
+        name: "./vector-{{ vector_version }}.rpm"
+        disable_gpg_check: true
+      notify: Restart vector service
+      tags: [vector, vector-install]
+
+    - name: Deploy vector config
+      become: true
+      ansible.builtin.template:
+        src: vector.toml.j2
+        dest: /etc/vector/vector.toml
+        owner: root
+        group: root
+        mode: "0644"
+      notify: Restart vector service
+      tags: [vector, vector-config]
+
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
+      tags: [vector, vector-service]
+
+# Lighthouse
+
+- name: Install and configure Lighthouse
+  hosts: lighthouse # list of hosts
+  become: true # add privilege for root 
+  handlers:
+    - name: Reload nginx
+      ansible.builtin.service: 
+        name: nginx
+        state: reloaded
+      tags: [lighthouse, lighthouse-service]
+  
+  tasks:
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present # object must be
+        update_cache: true  # command apt-get update
+      tags: [lighthouse, lighthouse-install] # tags for selective use
+
+    - name: Download Lighthouse archive
+      ansible.builtin.get_url: # modul download files
+        url: "https://github.com/VKCOM/lighthouse/archive/refs/heads/master.tar.gz"
+        dest: /tmp/lighthouse.tar.gz # path download
+        mode: '0644' # access files
+      tags: [lighthouse, lighthouse-install]
+
+    - name: Extract Lighthouse to web directory
+      ansible.builtin.unarchive: # unarchive module
+        src: /tmp/lighthouse.tar.gz # path files
+        dest: /var/www/ # path unarchave
+        remote_src: true # enviroment (local)
+        creates: /var/www/lighthouse-master #  make directory  
+      tags: [lighthouse, lighthouse-install]
+
+    - name: Rename directory to lighthouse
+      ansible.builtin.command: # command module
+        cmd: mv /var/www/lighthouse-master /var/www/lighthouse
+        creates: /var/www/lighthouse
+      tags: [lighthouse, lighthouse-install]
+
+    - name: Deploy nginx configuration for Lighthouse
+      ansible.builtin.template: # use template nginx.conf
+        src: nginx-lighthouse.conf.j2
+        dest: /etc/nginx/sites-available/default #  path location nginx.conf
+        owner: root # owner
+        group: root # group 
+        mode: '0644' # access file
+      notify: Reload nginx # handler reload nginx
+      tags: [lighthouse, lighthouse-config]
+
+    - name: Ensure nginx is running
+      ansible.builtin.service: # management service
+        name: nginx # name service 
+        state: started # systemctl start nginx
+        enabled: true # systemctl enable nginx.service
+      tags: [lighthouse, lighthouse-service]
+
