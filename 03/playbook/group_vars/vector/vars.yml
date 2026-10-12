@@ -1,0 +1,2 @@
+vector_version: "0.38.0"
+vector_clickhouse_table: "events"
