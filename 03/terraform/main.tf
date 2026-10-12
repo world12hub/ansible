@@ -31,7 +31,7 @@ module "clickhouse" {
   instance_cores = var.instance_cores
   instance_memory = var.instance_memory
   instance_core_fraction = var.instance_core_fraction
-  boot_disk_type         = var.boot_disk_type
+  boot_disk_type         = var.boot_disk_type_clickhouse
   boot_disk_size         = var.boot_disk_size
 
   security_group_ids = [module.sg.sg_id]
@@ -81,7 +81,7 @@ module "vector" {
 module "lighthouse" {
   source         = "git::https://github.com/world12hub/ter-homeworks.git//diploma/modules/vm?ref=main"
   env_name       = var.env_name
-  instance_name  = var.instance_name_vector
+  instance_name  = var.instance_name_lighthouse
   instance_count = var.instance_count
   
   subnet_zones   = [var.zone]

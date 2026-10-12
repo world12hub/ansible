@@ -146,6 +146,11 @@ variable "boot_disk_type" {
   default = "network-hdd"
 }
 
+variable "boot_disk_type_clickhouse" {
+  type    = string
+  default = "network-ssd"
+}
+
 variable "boot_disk_size" {
   type    = number
   default = 10
