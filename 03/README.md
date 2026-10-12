@@ -32,6 +32,10 @@
 
 4. Подготовьте свой inventory-файл `prod.yml`.
 
+### Ответ:
+
+Подготовьте inventory-файл [prod.yml](https://github.com/world12hub/ansible/edit/main/03/playbook/inventory/prod.yml)
+
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
