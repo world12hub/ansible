@@ -3,6 +3,11 @@
 ## Подготовка к выполнению
 
 1. Подготовьте в Yandex Cloud три хоста: для `clickhouse`, для `vector` и для `lighthouse`.
+
+### Ответ:
+
+При помощи [terraform](https://github.com/world12hub/ansible/edit/main/03/terraform) подготовлены три хоста: для `clickhouse`, для `vector` и для `lighthouse
+
 2. Репозиторий LightHouse находится [по ссылке](https://github.com/VKCOM/lighthouse).
 
 ## Основная часть
