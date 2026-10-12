@@ -115,7 +115,7 @@
       tags: [lighthouse, lighthouse-install] # tags for selective use
 
     - name: Download Lighthouse archive
-      ansible.builtin.get_url: # modul download files
+      ansible.builtin.get_url: # module download files
         url: "https://github.com/VKCOM/lighthouse/archive/refs/heads/master.tar.gz"
         dest: /tmp/lighthouse.tar.gz # path download
         mode: '0644' # access files
