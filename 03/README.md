@@ -47,9 +47,29 @@
 <img width="1189" height="68" alt="image" src="https://github.com/user-attachments/assets/c3c937e3-bd28-4f7e-8562-e73030ff086f" />
 
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
+
+### Ответ:
+
+Выполнена команда `ansible-playbook -i inventory/prod.yml site.yml --check`
+
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
+
+### Ответ:
+
+Выполнена команда `ansible-playbook -i inventory/prod.yml site.yml --diff`
+
 8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
+
+### Ответ:
+
+Выполнена команда `ansible-playbook -i inventory/prod.yml site.yml --diff`
+
 9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
+
+### Ответ:
+
+Подготовлен настоящий README.md-файл.
+
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-03-yandex` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
 ---
