@@ -50,6 +50,12 @@
 
 ### Ответ:
 
+Выполнена команда `ansible -i inventory/prod.yml all -m ping`
+
+**Скриншот:**
+
+<img width="882" height="242" alt="image" src="https://github.com/user-attachments/assets/6c2d20c9-6988-4993-950c-1640fcdef602" />
+
 Выполнена команда `ansible-playbook -i inventory/prod.yml site.yml --check`
 
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
