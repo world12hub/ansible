@@ -98,14 +98,14 @@
 
 - name: Install and configure Lighthouse
   hosts: lighthouse # list of hosts
-  become: true # add privilege for root 
+  become: true # add privilege for root
   handlers:
     - name: Reload nginx
-      ansible.builtin.service: 
+      ansible.builtin.service:
         name: nginx
         state: reloaded
       tags: [lighthouse, lighthouse-service]
-  
+
   tasks:
     - name: Install nginx
       ansible.builtin.apt:
@@ -126,7 +126,7 @@
         src: /tmp/lighthouse.tar.gz # path files
         dest: /var/www/ # path unarchave
         remote_src: true # enviroment (local)
-        creates: /var/www/lighthouse-master #  make directory  
+        creates: /var/www/lighthouse-master #  make directory
       tags: [lighthouse, lighthouse-install]
 
     - name: Rename directory to lighthouse
@@ -140,15 +140,14 @@
         src: nginx-lighthouse.conf.j2
         dest: /etc/nginx/sites-available/default #  path location nginx.conf
         owner: root # owner
-        group: root # group 
+        group: root # group
         mode: '0644' # access file
       notify: Reload nginx # handler reload nginx
       tags: [lighthouse, lighthouse-config]
 
     - name: Ensure nginx is running
       ansible.builtin.service: # management service
-        name: nginx # name service 
+        name: nginx # name service
         state: started # systemctl start nginx
         enabled: true # systemctl enable nginx.service
       tags: [lighthouse, lighthouse-service]
-
