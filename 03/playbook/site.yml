@@ -108,7 +108,7 @@
 
   tasks:
     - name: Install nginx
-      ansible.builtin.apt:
+      ansible.builtin.dnf:
         name: nginx
         state: present # object must be
         update_cache: true  # command apt-get update

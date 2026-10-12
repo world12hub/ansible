@@ -113,7 +113,7 @@ variable "instance_count" {
 
 variable "image_family" {
   type    = string
-  default = "ubuntu-2004-lts"
+  default = "rocky-linux-9"
 }
 
 variable "public_ip" {
