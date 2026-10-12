@@ -19,8 +19,19 @@
 В playbook [site.yml](https://github.com/world12hub/ansible/edit/main/03/playbook/site.yml) добавлен play **LightHouse**.
 
 2. При создании tasks рекомендую использовать модули: `get_url`, `template`, `yum`, `apt`.
+
+### Ответ:
+
+При создании tasks использовались описанные модули. 
+
 3. Tasks должны: скачать статику LightHouse, установить Nginx или любой другой веб-сервер, настроить его конфиг для открытия LightHouse, запустить веб-сервер.
+
+### Ответ:
+
+Описание **tasks** в В playbook [site.yml](https://github.com/world12hub/ansible/edit/main/03/playbook/site.yml).
+
 4. Подготовьте свой inventory-файл `prod.yml`.
+
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.
