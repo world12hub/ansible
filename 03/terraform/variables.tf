@@ -113,7 +113,7 @@ variable "instance_count" {
 
 variable "image_family" {
   type    = string
-  default = "rocky-linux-9"
+  default = "rocky-9-oslogin"
 }
 
 variable "public_ip" {
