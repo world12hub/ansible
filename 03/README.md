@@ -101,7 +101,8 @@
 |---|---|---|
 | `clickhouse_version` | `22.3.3.44` | Версия ClickHouse |
 | `clickhouse_packages` | `[client, server, common-static]` | Список пакетов ClickHouse |
-| `vector_version` | `0.21.1` | Версия Vector |
+| `vector_version` | `0.38.0` | Версия Vector |
+| `vector_clickhouse_table` | `events` | Имя таблицы |
 
 ## Теги
 
