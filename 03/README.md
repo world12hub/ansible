@@ -64,6 +64,11 @@
 
 Выполнена команда `ansible-playbook -i inventory/prod.yml site.yml --diff`
 
+**Скриншот:**
+
+<img width="1023" height="335" alt="image" src="https://github.com/user-attachments/assets/bb289a38-66f4-4ab9-b52b-f88d390ed6a1" />
+
+
 8. Повторно запустите playbook с флагом `--diff` и убедитесь, что playbook идемпотентен.
 
 ### Ответ:
