@@ -25,7 +25,7 @@
         - name: Get clickhouse distrib (fallback)
           ansible.builtin.get_url:
             url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
-            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+            dest: "./clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
             mode: "0644"
           tags: [clickhouse, clickhouse-install]
     - name: Install clickhouse packages
