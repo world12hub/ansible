@@ -28,7 +28,7 @@ variable "zone" {
 variable "username" {
   type        = string
   description = "Имя пользователя в ВМ"
-  default     = "ubuntu"
+  default     = "rocky"
 }
 
 
