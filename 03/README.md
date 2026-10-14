@@ -75,13 +75,45 @@
 
 Выполнена команда `ansible-playbook -i inventory/prod.yml site.yml --diff`
 
+**Скришот:**
+
+<img width="1012" height="339" alt="image" src="https://github.com/user-attachments/assets/fcfaf3ac-5c9f-4229-9619-24f9b44c4b6d" />
+
 9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги.
 
 ### Ответ:
 
 Подготовлен настоящий README.md-файл.
 
+## Что делает
+
+| Play | Сервис | Задачи |
+|---|---|---|
+| 1 | **ClickHouse** | Скачивает RPM, ставит через `dnf`, создаёт БД `logs` |
+| 2 | **Vector** | Ставит пакет, раскладывает `vector.toml`, запускает сервис |
+| 3 | **Lighthouse** | Ставит nginx, скачивает статику, настраивает конфиг |
+
+## Параметры
+
+Задаются в `inventory/group_vars/all.yml`:
+
+| Переменная | По умолчанию | Описание |
+|---|---|---|
+| `clickhouse_version` | `22.3.3.44` | Версия ClickHouse |
+| `clickhouse_packages` | `[client, server, common-static]` | Список пакетов ClickHouse |
+| `vector_version` | `0.38.0` | Версия Vector |
+| `vector_clickhouse_table` | `events` | Имя таблицы |
+
+## Теги
+
+| Сервис | Теги |
+|---|---|
+| **ClickHouse** | `clickhouse`, `clickhouse-install`, `clickhouse-service`, `clickhouse-config` |
+| **Vector** | `vector`, `vector-install`, `vector-config`, `vector-service` |
+| **Lighthouse** | `lighthouse`, `lighthouse-install`, `lighthouse-config`, `lighthouse-service` |
+
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-03-yandex` на фиксирующий коммит, в ответ предоставьте ссылку на него.
+
 
 ---
 
