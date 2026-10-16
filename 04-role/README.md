@@ -42,11 +42,11 @@
 
 <img width="636" height="163" alt="image" src="https://github.com/user-attachments/assets/a14dbd10-d37a-4720-9dca-f63c000a5bfe" />
 
-2. При помощи `ansible-galaxy role install -r requirements.yml -p roles/` скачайте себе эту роль.
+2. При помощи `ansible-galaxy` скачайте себе эту роль.
 
 ### Ответ:
 
-При помощи `ansible-galaxy` скачана роль `clickhouse`.   
+При помощи `ansible-galaxy role install -r requirements.yml -p roles/` скачана роль `clickhouse`.   
 
 3. Создайте новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
 
