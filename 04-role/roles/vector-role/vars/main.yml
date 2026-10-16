@@ -1,0 +1,10 @@
+---
+# vars file for vector-role
+vector_service_name: vector
+vector_package_name: vector
+
+vector_tmp_rpm: "/var/tmp/vector-{{ vector_version }}.rpm"
+
+vector_config_owner: root
+vector_config_group: root
+vector_config_mode: "0644"

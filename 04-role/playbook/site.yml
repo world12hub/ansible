@@ -50,44 +50,9 @@
 
 - name: Install Vector
   hosts: vector
-  handlers:
-    - name: Restart vector service
-      become: true
-      ansible.builtin.service:
-        name: vector
-        state: restarted
-      tags: [vector, vector-service]
+  roles:
+    - vector-role
 
-  tasks:
-    - name: Get vector distrib
-      ansible.builtin.get_url:
-        url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.{{ ansible_architecture }}.rpm"
-        dest: "/var/tmp/vector-{{ vector_version }}.rpm"
-        mode: "0644"
-      tags: [vector, vector-install]
-
-    - name: Install vector package
-      become: true
-      ansible.builtin.dnf:
-        name: "/var/tmp/vector-{{ vector_version }}.rpm"
-        disable_gpg_check: true
-      notify: Restart vector service
-      tags: [vector, vector-install]
-
-    - name: Deploy vector config
-      become: true
-      ansible.builtin.template:
-        src: vector.toml.j2
-        dest: /etc/vector/vector.toml
-        owner: root
-        group: root
-        mode: "0644"
-      notify: Restart vector service
-      tags: [vector, vector-config]
-
-    - name: Flush handlers
-      ansible.builtin.meta: flush_handlers
-      tags: [vector, vector-service]
 
 # Lighthouse
 
