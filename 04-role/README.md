@@ -60,11 +60,20 @@
 
 На основе tasks из старого playbook заполнена новая vector-role. Разнесены переменные между `vars` и `default`. 
  
-Скриншот:
+**Скриншот:**
 
 <img width="1432" height="281" alt="image" src="https://github.com/user-attachments/assets/6a993065-776c-417f-9a21-302f6fe086a0" />
 
 5. Перенести нужные шаблоны конфигов в `templates`.
+
+### Ответ:
+
+Перенесен нужный конфиг в `templates`
+
+**Скриншот:**
+
+<img width="681" height="530" alt="image" src="https://github.com/user-attachments/assets/4d8c404e-9ece-4f92-87a0-2997fb6db14e" />
+
 6. Опишите в `README.md` обе роли и их параметры. Пример качественной документации ansible role [по ссылке](https://github.com/cloudalchemy/ansible-prometheus).
 7. Повторите шаги 3–6 для LightHouse. Помните, что одна роль должна настраивать один продукт.
 8. Выложите все roles в репозитории. Проставьте теги, используя семантическую нумерацию. Добавьте roles в `requirements.yml` в playbook.
