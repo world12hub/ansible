@@ -42,7 +42,7 @@
 
 <img width="636" height="163" alt="image" src="https://github.com/user-attachments/assets/a14dbd10-d37a-4720-9dca-f63c000a5bfe" />
 
-2. При помощи `ansible-galaxy` скачайте себе эту роль.
+2. При помощи `ansible-galaxy role install -r requirements.yml -p roles/` скачайте себе эту роль.
 
 ### Ответ:
 
