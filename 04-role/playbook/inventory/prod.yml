@@ -1,0 +1,20 @@
+all:
+  children:
+    clickhouse:
+      hosts:
+        clickhouse-01:
+          ansible_host: <IP_CLICKHOUSE>
+          ansible_user: rocky
+    vector:
+      hosts:
+        vector-01:
+          ansible_host: <IP_VECTOR>
+          ansible_user: rocky
+    lighthouse:
+      hosts:
+        lighthouse-01:
+          ansible_host: <IP_LIGHTHOUSE>
+          ansible_user: rocky
+  vars:
+    ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+    ansible_python_interpreter: /usr/bin/python3
