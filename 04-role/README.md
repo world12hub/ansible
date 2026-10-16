@@ -49,6 +49,11 @@
 При помощи `ansible-galaxy` скачана роль `clickhouse`.   
 
 3. Создайте новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
+
+### Ответ:
+
+Создан новый каталог с ролью при помощи `ansible-galaxy role init vector-role --init-path roles/`
+
 4. На основе tasks из старого playbook заполните новую role. Разнесите переменные между `vars` и `default`. 
 5. Перенести нужные шаблоны конфигов в `templates`.
 6. Опишите в `README.md` обе роли и их параметры. Пример качественной документации ansible role [по ссылке](https://github.com/cloudalchemy/ansible-prometheus).
