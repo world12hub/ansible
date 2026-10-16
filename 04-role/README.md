@@ -34,6 +34,15 @@
        version: "1.13"
        name: clickhouse 
    ```
+### Ответ:
+
+Создан файл `requirements.yml`.
+
+**Скриншот:**
+
+<img width="636" height="163" alt="image" src="https://github.com/user-attachments/assets/a14dbd10-d37a-4720-9dca-f63c000a5bfe" />
+
+
 
 2. При помощи `ansible-galaxy` скачайте себе эту роль.
 3. Создайте новый каталог с ролью при помощи `ansible-galaxy role init vector-role`.
