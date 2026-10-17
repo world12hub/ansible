@@ -45,34 +45,6 @@
 > group_vars, host_vars, play `vars:`), but be aware of the precedence
 > difference when reusing the role.
 
-### Overridable from outside (example)
-
-```yaml
-lighthouse_package_url: "https://github.com/VKCOM/lighthouse/archive/refs/tags/v1.0.0.tar.gz"
-dir_lighthouse: "/srv/www/lighthouse"
-web_server: "nginx"
-
-## Dependencies
-
-This role has **no dependencies on other Galaxy roles**.
-
-The role installs and manages the web server package (`nginx`) itself via
-`ansible.builtin.dnf`, so a pre-installed nginx is not required.
-
-If nginx is already managed by another role in your playbook, make sure
-that:
-
-- the execution order is correct — this role must run **after** the role
-  that installs nginx;
-- the nginx drop-in config directory (`{{ lighthouse_config_dir }}`,
-  default `/etc/nginx/conf.d/`) is not managed by a conflicting role;
-- the `web_server` variable points to the same package/service name that
-  the other role uses.
-
-The role does not read variables from other roles or from the global
-scope (e.g. `hostvars`, `group_vars`) — all inputs are self-contained
-and can be overridden via role parameters, `vars:`, or inventory.
-
 ---
 
 ## Example Playbook
@@ -85,4 +57,4 @@ and can be overridden via role parameters, `vars:`, or inventory.
   become: true
   roles:
     - role: username.lighthouse-role
-
+```
