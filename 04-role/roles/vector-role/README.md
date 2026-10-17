@@ -9,9 +9,6 @@ The role downloads and installs the Vector RPM package of a given version, deplo
 
 - Ansible >= 2.14
 - Target hosts running RHEL/CentOS/Fedora/AlmaLinux/Rocky — the role uses the `dnf` module, so Debian/Ubuntu hosts are not supported as-is.
-- Network access to `packages.timber.io` (or a mirror) from the target hosts.
-- `become` privileges to install the package and manage the `vector` systemd service.
-- The `ansible_architecture` fact is used to build the package URL, so `gather_facts` must not be disabled.
 
 Role Variables
 --------------
