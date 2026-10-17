@@ -71,7 +71,7 @@
       ansible.builtin.dnf:
         name: nginx
         state: present # object must be
-        update_cache: true  # command apt-get update
+#        update_cache: true  # command apt-get update
       tags: [lighthouse, lighthouse-install] # tags for selective use
 
     - name: Download Lighthouse archive
