@@ -1,38 +1,96 @@
-Role Name
+# lighthouse-role
+
+An Ansible role that installs and configures the
+[Lighthouse](https://github.com/VKCOM/lighthouse) web UI (by VKCOM) — a
+lightweight static frontend for managing a Ceph cluster (RADOS Gateway).
+
+The role installs nginx, downloads the prebuilt Lighthouse bundle from
+GitHub, extracts it into `/var/www/lighthouse`, and deploys an nginx
+virtual host that serves the static files.
+
 =========
 
-A brief description of the role goes here.
+## Requirements
 
-Requirements
+- **Ansible**: `>= 2.14` (uses `ansible.builtin.dnf`, `unarchive` with
+  `extra_opts`, and FQCN module names).
+- **Target OS**: RHEL / Rocky / AlmaLinux / Fedora or any other
+  distribution using the `dnf` package manager. For Debian/Ubuntu you
+  will need to replace `ansible.builtin.dnf` with `ansible.builtin.apt`
+  and adjust the package name (`web_server`) accordingly.
+- **Internet access** from the target host (or a configured proxy/mirror)
+  — the role downloads an archive from `github.com`.
+- **Privileges**: run with `become: true` (root), because the role
+  installs packages and writes to `/var/www` and `/etc/nginx`.
+  
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Role Variables
 
-Role Variables
---------------
+### `defaults/main.yml`
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Variable | Default | Description |
+|---|---|---|
+| `lighthouse_package_url` | `https://github.com/VKCOM/lighthouse/archive/refs/heads/master.tar.gz` | URL of the Lighthouse source archive. Can point to a tag, branch, or your own fork. |
+| `lighthouse_tmp_tar` | `/tmp/lighthouse.tar.gz` | Path where the archive is downloaded on the target host. |
+| `dir_web_server` | `/var/www/` | Root web directory where Lighthouse will be placed. |
+| `dir_lighthouse` | `{{ dir_web_server }}/lighthouse` | Final directory containing the Lighthouse static files. |
+| `lighthouse_config_dir` | `/etc/nginx/conf.d/` | Directory for nginx drop-in configs. |
+| `lighthouse_config_file` | `{{ lighthouse_config_dir }}/lighthouse.conf` | Full path to the Lighthouse virtual host config. |
 
-Dependencies
-------------
+### `vars/main.yml`
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+| Variable | Default | Description |
+|---|---|---|
+| `web_server` | `nginx` | Package/service name of the web server. Used in `dnf`, `service`, and the handler. |
+| `lighthouse_config_owner` | `root` | Owner of the nginx config file (and of `/var/www`). |
+| `lighthouse_config_group` | `root` | Group of the nginx config file. |
+| `lighthouse_config_mode` | `0644` | Permissions on the nginx config file (and, historically, on the downloaded archive). |
+| `lighthouse_var_www_mode` | `0755` | Permissions on the `/var/www` directory. |
 
-Example Playbook
-----------------
+> Variables in `vars/main.yml` have higher precedence than those in
+> `defaults`. You can still override them from outside (extra-vars,
+> group_vars, host_vars, play `vars:`), but be aware of the precedence
+> difference when reusing the role.
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+### Overridable from outside (example)
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+lighthouse_package_url: "https://github.com/VKCOM/lighthouse/archive/refs/tags/v1.0.0.tar.gz"
+dir_lighthouse: "/srv/www/lighthouse"
+web_server: "nginx"
 
-License
--------
+## Dependencies
 
-BSD
+This role has **no dependencies on other Galaxy roles**.
 
-Author Information
-------------------
+The role installs and manages the web server package (`nginx`) itself via
+`ansible.builtin.dnf`, so a pre-installed nginx is not required.
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+If nginx is already managed by another role in your playbook, make sure
+that:
+
+- the execution order is correct — this role must run **after** the role
+  that installs nginx;
+- the nginx drop-in config directory (`{{ lighthouse_config_dir }}`,
+  default `/etc/nginx/conf.d/`) is not managed by a conflicting role;
+- the `web_server` variable points to the same package/service name that
+  the other role uses.
+
+The role does not read variables from other roles or from the global
+scope (e.g. `hostvars`, `group_vars`) — all inputs are self-contained
+and can be overridden via role parameters, `vars:`, or inventory.
+
+---
+
+## Example Playbook
+
+### Minimal example
+
+```yaml
+- name: Deploy Lighthouse
+  hosts: servers
+  become: true
+  roles:
+    - role: username.lighthouse-role
+
