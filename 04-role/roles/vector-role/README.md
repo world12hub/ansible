@@ -1,38 +1,123 @@
-Role Name
+# vector-role
 =========
 
-A brief description of the role goes here.
+An Ansible role that installs and configures [Vector](https://vector.dev/) — a tool for collecting, transforming and shipping logs and metrics.
+The role downloads and installs the Vector RPM package of a given version, deploys `vector.toml` from a Jinja2 template, configures a ClickHouse sink for logs, and restarts the `vector` service when the package or config changes.
 
-Requirements
+## Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- Ansible >= 2.14
+- Target hosts running RHEL/CentOS/Fedora/AlmaLinux/Rocky — the role uses the `dnf` module, so Debian/Ubuntu hosts are not supported as-is.
+- Network access to `packages.timber.io` (or a mirror) from the target hosts.
+- `become` privileges to install the package and manage the `vector` systemd service.
+- The `ansible_architecture` fact is used to build the package URL, so `gather_facts` must not be disabled.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### defaults/main.yml
+
+| Variable | Default | Description |
+|---|---|---|
+| `vector_version` | `"0.38.0"` | Vector version to install |
+| `vector_package_url` | `https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.{{ ansible_architecture }}.rpm` | RPM package URL |
+| `vector_config_dir` | `/etc/vector` | Configuration directory |
+| `vector_config_file` | `{{ vector_config_dir }}/vector.toml` | Path to the config file |
+| `vector_clickhouse_table` | `events` | Table for logs |
+
+### vars/main.yml 
+
+| Variable | Value | Description |
+|---|---|---|
+| `vector_service_name` | `vector` | systemd unit name |
+| `vector_tmp_rpm` | `/var/tmp/vector-{{ vector_version }}.rpm` | Temporary RPM path |
+| `vector_config_owner` | `root` | Config file owner |
+| `vector_config_group` | `root` | Config file group |
+| `vector_config_mode` | `0644` | Config file permissions |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Minimal usage with all defaults:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: vector
+  roles:
+    - vector-role
+```
 
-License
--------
+Installing the role from a git repository via `requirements.yml`:
 
-BSD
+```yaml
+---
+- src: git@github.com:yourname/vector-role.git
+  scm: git
+  version: "main"
+  name: vector-role
+```
 
-Author Information
-------------------
+```bash
+ansible-galaxy role install -r requirements.yml -p roles/
+```
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+### Tags
+
+The role is tagged for selective execution:
+
+| Tag | What it does |
+|---|---|
+| `vector` | The whole role |
+| `vector-install` | Download and install the package |
+| `vector-config` | Deploy `vector.toml` |
+| `vector-service` | Apply handlers (restart the service) |
+
+```bash
+ansible-playbook site.yml --tags vector-install
+ansible-playbook site.yml --tags vector-install,vector-config
+ansible-playbook site.yml --tags vector
+```
+
+### Handlers
+
+| Handler | Triggered when |
+|---|---|
+| `Restart vector service` | The package is installed or `vector.toml` changes |
+
+### Configuration template
+
+The config is rendered from `templates/vector.toml.j2`. Example output:
+
+```toml
+# Vector configuration
+# Managed by Ansible — do not edit manually
+# Host: {{ inventory_hostname }}
+
+data_dir = "/var/lib/vector"
+
+[sources.journald_logs]
+type = "journald"
+read_from = "beginning"
+
+[sources.app_logs]
+type = "file"
+include = ["/var/log/*.log"]
+ignore_older_secs = 86400
+
+[sinks.stdout]
+type = "console"
+inputs = ["journald_logs", "app_logs"]
+encoding.codec = "json"
+
+[sinks.clickhouse]
+type = "clickhouse"
+inputs = ["app_logs"]
+endpoint = "http://127.0.0.1:8123"
+database = "logs"
+table = "{{ vector_clickhouse_table | default('events') }}"
+```
