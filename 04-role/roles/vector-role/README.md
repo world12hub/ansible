@@ -45,7 +45,8 @@ Example Playbook
 Minimal usage with all defaults:
 
 ```yaml
-- hosts: vector
+- name: Install Vector
+  hosts: vector
   roles:
     - vector-role
 ```
