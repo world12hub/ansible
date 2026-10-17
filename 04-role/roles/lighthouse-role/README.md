@@ -1,13 +1,5 @@
 # lighthouse-role
 
-An Ansible role that installs and configures the
-[Lighthouse](https://github.com/VKCOM/lighthouse) web UI (by VKCOM) — a
-lightweight static frontend for managing a Ceph cluster (RADOS Gateway).
-
-The role installs nginx, downloads the prebuilt Lighthouse bundle from
-GitHub, extracts it into `/var/www/lighthouse`, and deploys an nginx
-virtual host that serves the static files.
-
 =========
 
 ## Requirements
