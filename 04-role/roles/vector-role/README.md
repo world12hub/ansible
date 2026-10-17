@@ -26,7 +26,7 @@ Role Variables
 ### vars/main.yml 
 
 | Variable | Value | Description |
-|---|---|---|---|
+|---|---|---|
 | `vector_service_name` | `vector` | systemd unit name |
 | `vector_package_name` | `vector` | package name |
 | `vector_tmp_rpm` | `/var/tmp/vector-{{ vector_version }}.rpm` | Temporary RPM path |
