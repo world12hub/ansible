@@ -15,5 +15,13 @@
 # Lighthouse
 - name: Install Lighthouse
   hosts: lighthouse
-  roles:
-    - lighthouse
+  tasks:
+    - name: Wait for ClickHouse to be reachable
+      ansible.builtin.wait_for:
+        host: "{{ clickhouse_host | default('clickhouse') }}"
+        port: 8123
+        timeout: 30
+
+    - name: Apply Lighthouse role
+      ansible.builtin.include_role:
+        name: lighthouse
