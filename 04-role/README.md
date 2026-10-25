@@ -81,6 +81,14 @@
 Описан `README.md` для роли `vector`.
 
 7. Повторите шаги 3–6 для LightHouse. Помните, что одна роль должна настраивать один продукт.
+
+### Ответ:
+
+1. Создан новый каталог с ролью при помощи `ansible-galaxy role init lighthouse-role --init-path roles/`
+2. На основе tasks из старого playbook заполнена новая lighthouse-role. Разнесены переменные между `vars` и `default`. 
+3. Перенесен нужный конфиг в `templates`
+4. Описан `README.md` для роли `lighthouse`.
+
 8. Выложите все roles в репозитории. Проставьте теги, используя семантическую нумерацию. Добавьте roles в `requirements.yml` в playbook.
 9. Переработайте playbook на использование roles. Не забудьте про зависимости LightHouse и возможности совмещения `roles` с `tasks`.
 10. Выложите playbook в репозиторий.
