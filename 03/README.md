@@ -28,7 +28,7 @@
 
 ### Ответ:
 
-Описание **tasks** в В playbook [site.yml](https://github.com/world12hub/ansible/edit/main/03/playbook/site.yml).
+Описание **tasks** в playbook [site.yml](https://github.com/world12hub/ansible/edit/main/03/playbook/site.yml).
 
 4. Подготовьте свой inventory-файл `prod.yml`.
 
