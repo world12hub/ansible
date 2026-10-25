@@ -4,17 +4,8 @@
 
 ## Requirements
 
-- **Ansible**: `>= 2.14` (uses `ansible.builtin.dnf`, `unarchive` with
-  `extra_opts`, and FQCN module names).
-- **Target OS**: RHEL / Rocky / AlmaLinux / Fedora or any other
-  distribution using the `dnf` package manager. For Debian/Ubuntu you
-  will need to replace `ansible.builtin.dnf` with `ansible.builtin.apt`
-  and adjust the package name (`web_server`) accordingly.
-- **Internet access** from the target host (or a configured proxy/mirror)
-  — the role downloads an archive from `github.com`.
-- **Privileges**: run with `become: true` (root), because the role
-  installs packages and writes to `/var/www` and `/etc/nginx`.
-  
+- **Ansible**: `>= 2.14`
+
 ------------
 
 ## Role Variables
@@ -58,3 +49,8 @@
   roles:
     - role: username.lighthouse-role
 ```
+
+License
+-------
+
+MIT
