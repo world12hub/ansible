@@ -10,10 +10,10 @@
 - name: Install Vector
   hosts: vector
   roles:
-    - vector-role
+    - vector
 
 # Lighthouse
 - name: Install Lighthouse
   hosts: lighthouse
   roles:
-    - lighthouse-role
+    - lighthouse
