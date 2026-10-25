@@ -1,8 +1,0 @@
----
-# vars file for lighthouse-role
-web_server: "nginx"
-
-lighthouse_config_owner: root
-lighthouse_config_group: root
-lighthouse_config_mode: "0644"
-lighthouse_var_www_mode: "0755"
