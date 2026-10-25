@@ -86,10 +86,25 @@
 
 1. Создан новый каталог с ролью при помощи `ansible-galaxy role init lighthouse-role --init-path roles/`
 2. На основе tasks из старого playbook заполнена новая lighthouse-role. Разнесены переменные между `vars` и `default`. 
+
+**Скриншот:**
+
+<img width="1352" height="289" alt="image" src="https://github.com/user-attachments/assets/a589698d-8e4e-41f1-ad59-ffa94e919305" />
+
 3. Перенесен нужный конфиг в `templates`
+
+**Скриншот:
+**
+<img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/6a6b3950-0a15-4bbf-a576-5119d0557719" />
+
 4. Описан `README.md` для роли `lighthouse`.
+---
 
 8. Выложите все roles в репозитории. Проставьте теги, используя семантическую нумерацию. Добавьте roles в `requirements.yml` в playbook.
+
+### Ответ:
+
+
 9. Переработайте playbook на использование roles. Не забудьте про зависимости LightHouse и возможности совмещения `roles` с `tasks`.
 10. Выложите playbook в репозиторий.
 11. В ответе дайте ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
