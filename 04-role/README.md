@@ -115,8 +115,19 @@
 
 
 9. Переработайте playbook на использование roles. Не забудьте про зависимости LightHouse и возможности совмещения `roles` с `tasks`.
+
+### Ответ:
+
+Переработан playbook на использование roles.
+
 10. Выложите playbook в репозиторий.
+
+Выложен playbook в репозиторий https://github.com/world12hub/ansible/tree/main/04-role/playbook
+
 11. В ответе дайте ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
+
+Репозитории roles [lighthouse-role](https://github.com/world12hub/lighthouse-role) и [vector-role](https://github.com/world12hub/vector-role)
+Репозиторий [playbook](https://github.com/world12hub/ansible/tree/main/04-role/playbook)
 
 ---
 
