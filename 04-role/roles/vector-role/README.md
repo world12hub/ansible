@@ -120,3 +120,8 @@ endpoint = "http://127.0.0.1:8123"
 database = "logs"
 table = "{{ vector_clickhouse_table | default('events') }}"
 ```
+
+License
+-------
+
+MIT
