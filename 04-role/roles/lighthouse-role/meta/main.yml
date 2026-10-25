@@ -2,12 +2,8 @@ galaxy_info:
   author: Sergey Kanyugin
   description: Role for installation LightHouse
   company: netology
-
-
   license: MIT
-
   min_ansible_version: 2.14
-
   platforms:
     - name: EL
       versions:
