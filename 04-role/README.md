@@ -93,16 +93,25 @@
 
 3. Перенесен нужный конфиг в `templates`
 
-**Скриншот:
-**
+**Скриншот:**
+
 <img width="550" height="283" alt="image" src="https://github.com/user-attachments/assets/6a6b3950-0a15-4bbf-a576-5119d0557719" />
 
 4. Описан `README.md` для роли `lighthouse`.
+
 ---
 
 8. Выложите все roles в репозитории. Проставьте теги, используя семантическую нумерацию. Добавьте roles в `requirements.yml` в playbook.
 
 ### Ответ:
+
+Выложены роли в репозитории [lighthouse-role](https://github.com/world12hub/lighthouse-role) и [vector-role](https://github.com/world12hub/vector-role)
+
+Добавлены roles в `requirements.yml` в playbook.
+
+**Скриншот:**
+
+<img width="619" height="352" alt="image" src="https://github.com/user-attachments/assets/d45a646b-ff25-4056-be7e-8c59f8ac3fb5" />
 
 
 9. Переработайте playbook на использование roles. Не забудьте про зависимости LightHouse и возможности совмещения `roles` с `tasks`.
