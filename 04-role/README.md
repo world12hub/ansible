@@ -122,9 +122,13 @@
 
 10. Выложите playbook в репозиторий.
 
+### Ответ:
+
 Выложен playbook в репозиторий https://github.com/world12hub/ansible/tree/main/04-role/playbook
 
 11. В ответе дайте ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
+
+### Ответ:
 
 Репозитории roles [lighthouse-role](https://github.com/world12hub/lighthouse-role) и [vector-role](https://github.com/world12hub/vector-role)
 
