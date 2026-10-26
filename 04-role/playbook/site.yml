@@ -13,7 +13,7 @@
     - vector
 
 # Lighthouse
-- name: Install Vector
+- name: Install Lighthouse
   hosts: lighthouse 
   roles:
     - lighthouse
