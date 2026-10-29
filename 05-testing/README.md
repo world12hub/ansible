@@ -25,6 +25,17 @@
 
 2. Выполните `docker pull aragast/netology:latest` —  это образ с podman, tox и несколькими пайтонами (3.7 и 3.9) внутри.
 
+### Ответ:
+
+Выполнен `docker pull aragast/netology:latest`
+
+Выполнена команда: `docker images`
+
+**Скриншот:**
+
+<img width="830" height="75" alt="image" src="https://github.com/user-attachments/assets/b48ee15b-9a5f-4fb8-98c1-2ae68943e0ed" />
+
+
 ## Основная часть
 
 Ваша цель — настроить тестирование ваших ролей. 
