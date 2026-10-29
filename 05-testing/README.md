@@ -58,6 +58,27 @@
 
 
 2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.
+
+### Ответ:
+
+1. При выполнении команды `molecule init scenario --driver-name docker` вышла ошибка об отсутствии опции `--driver-name`
+
+**Скриншот:**
+
+<img width="714" height="93" alt="image" src="https://github.com/user-attachments/assets/3b1ad130-6acb-4f8c-a0c8-d1ea0b066cab" />
+
+2. Для успешной работы, выполнены следующие действия:
+
+2.1. Выполнена команда: `molecule init scenario default`
+
+Скриншоты:
+
+<img width="658" height="80" alt="image" src="https://github.com/user-attachments/assets/044911b1-3917-4695-9ec4-25e25af52518" />
+
+<img width="289" height="352" alt="image" src="https://github.com/user-attachments/assets/b2537ffc-68e6-4d75-898c-286d291f5323" />
+
+
+
 3. Добавьте несколько разных дистрибутивов (oraclelinux:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.
 4. Добавьте несколько assert в verify.yml-файл для  проверки работоспособности vector-role (проверка, что конфиг валидный, проверка успешности запуска и др.). 
 5. Запустите тестирование роли повторно и проверьте, что оно прошло успешно.
