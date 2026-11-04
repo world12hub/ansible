@@ -442,7 +442,7 @@ https://github.com/world12hub/ansible/blob/main/05-testing/vector/tox-requiremen
 
 https://github.com/world12hub/ansible/tree/main/05-testing/vector/molecule/tox
 
-<deatails>
+<details>
 <summary>Вывод команды tox<summary>
 ```
   py312-ansible30: remove tox env folder /home/adminsk/ansible/05-testing/vector/.tox/py312-ansible30
