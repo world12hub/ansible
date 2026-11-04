@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: "Include vector role"
+      include_role:
+        name: "/mnt/c/Users/rlyst/Netology/08-ansible-05-testing/vector"

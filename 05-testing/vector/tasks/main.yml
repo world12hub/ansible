@@ -1,0 +1,92 @@
+---
+- name: Install dependencies
+  ansible.builtin.apt:
+    name: ["wget", "tar", "gzip"]
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Create installation directory
+  ansible.builtin.file:
+    path: "{{ vector_install_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Download Vector
+  ansible.builtin.get_url:
+    url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-x86_64-unknown-linux-gnu.tar.gz"
+    dest: "/tmp/vector.tar.gz"
+    mode: '0644'
+    timeout: 30
+
+- name: Extract Vector
+  ansible.builtin.unarchive:
+    src: "/tmp/vector.tar.gz"
+    dest: "{{ vector_install_dir }}"
+    remote_src: true
+    extra_opts: ["--strip-components=1"]
+    creates: "{{ vector_install_dir }}/bin/vector"
+
+- name: Install Vector binary
+  ansible.builtin.copy:
+    src: "{{ vector_install_dir }}/vector-x86_64-unknown-linux-gnu/bin/vector"
+    dest: "/usr/local/bin/vector"
+    mode: '0755'
+    remote_src: true
+    owner: root
+    group: root
+
+- name: Create vector group
+  ansible.builtin.group:
+    name: vector
+    system: true
+    state: present
+
+- name: Create vector user
+  ansible.builtin.user:
+    name: vector
+    group: vector
+    system: true
+    shell: /bin/false
+    home: /var/lib/vector
+  register: user_created
+
+- name: Add vector to adm group (for log access)
+  ansible.builtin.user:
+    name: vector
+    groups: adm
+    append: true
+  when: user_created.changed or user_created is success
+
+- name: Create directories
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    owner: vector
+    group: vector
+    mode: '0755'
+  loop:
+    - { path: "/etc/vector" }
+    - { path: "/var/lib/vector" }
+    - { path: "/var/log/vector" }
+
+- name: Deploy config
+  ansible.builtin.template:
+    src: vector.toml
+    dest: "{{ vector_config_path }}"
+    mode: '0640'
+    owner: vector
+    group: vector
+
+- name: Deploy systemd service
+  ansible.builtin.template:
+    src: vector.service.j2
+    dest: "/etc/systemd/system/vector.service"
+    mode: '0644'
+
+- name: Start Vector directly
+  ansible.builtin.command: "vector --config /etc/vector/vector.toml"
+  async: 3600
+  poll: 0
+  register: vector_process
+  become: true
+  changed_when: false

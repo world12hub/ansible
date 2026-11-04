@@ -1,0 +1,7 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && \
+    apt-get install -y python3 sudo && \
+    rm -rf /var/lib/apt/lists/*
+
+CMD ["/bin/sh", "-c", "while true; do sleep 10000; done"]

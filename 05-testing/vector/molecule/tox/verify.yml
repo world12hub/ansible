@@ -1,0 +1,30 @@
+---
+- name: Verify Vector installation and configuration
+  hosts: all
+  gather_facts: false  # Ускоряет выполнение, если факты не нужны
+  tasks:
+    - name: Check if Vector is running
+      ansible.builtin.shell: |
+        if pgrep -f 'vector --config' >/dev/null; then
+          echo "running"
+        else
+          echo "not running"
+        fi
+      register: vector_status
+      changed_when: false
+      ignore_errors: true
+
+    - name: Display Vector status
+      ansible.builtin.debug:
+        var: vector_status.stdout
+        
+    - name: Check Vector version (дополнительно)
+      ansible.builtin.command: vector --version
+      register: vector_version
+      changed_when: false
+      tags: verify
+
+    - name: Print Vector version (для информации)
+      ansible.builtin.debug:
+        var: vector_version.stdout
+      tags: verify

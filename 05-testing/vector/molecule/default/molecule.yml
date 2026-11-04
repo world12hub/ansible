@@ -1,0 +1,23 @@
+---
+driver:
+  name: docker
+lint: |
+  ansible-lint .
+platforms:
+  - name: ubuntu-instance
+    image: ubuntu:22.04
+    pre_build_image: false  # Разрешаем модификацию образа
+    command: /bin/sh -c "while true; do sleep 10000; done"
+    dockerfile: Dockerfile.ubuntu
+  - name: debian-instance
+    image: debian:bookworm-slim  # Debian 12 (bookworm)
+    pre_build_image: false  # Разрешаем модификацию образа
+    command: /bin/sh -c "while true; do sleep 10000; done"
+    dockerfile: Dockerfile.debian
+dependency:
+  name: galaxy
+  enabled: false  # отключает загрузку requirements.yml
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

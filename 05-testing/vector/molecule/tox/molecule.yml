@@ -1,0 +1,33 @@
+---
+driver:
+  name: podman
+platforms:
+  - name: ubuntu-instance
+    image: ubuntu:22.04
+    pre_build_image: false  # Разрешаем модификацию образа
+    command: sleep infinity  # Более эффективно чем while true
+    dockerfile: Dockerfile.ubuntu
+    tmpfs:  # Добавляем tmpfs для ускорения
+      - /tmp
+      - /run
+  - name: debian-instance
+    image: debian:bookworm-slim  # Debian 12 (bookworm)
+    pre_build_image: false  # Разрешаем модификацию образа
+    command: sleep infinity
+    dockerfile: Dockerfile.debian
+    tmpfs:
+      - /tmp
+      - /run
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+scenario:
+  name: tox
+  test_sequence:
+    - destroy
+    - dependency
+    - create
+    - converge
+    - verify
+    - destroy

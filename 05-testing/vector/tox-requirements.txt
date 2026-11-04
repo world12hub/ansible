@@ -1,0 +1,6 @@
+molecule
+molecule-podman
+molecule-docker
+jmespath
+ansible-core
+ansible-lint
