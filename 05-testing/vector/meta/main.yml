@@ -1,7 +1,7 @@
 galaxy_info:
-  author: "Roman Lystsev"
+  author: "Sergey Kanyugin"
   description: "Роль для установки Vector"
-  company: "Home"
+  company: "Netology"
   license: "MIT"
   role_name: vector
   namespace: dio
