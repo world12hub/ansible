@@ -419,7 +419,35 @@ default                   : actions=12  successful=7  disabled=2  skipped=0  mis
 8. Запустите команду `tox`. Убедитесь, что всё отработало успешно.
 9. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
+### Ответ:
+
+1. Установлен tox
+
+pip install tox
+tox --version
+
+<img width="868" height="63" alt="image" src="https://github.com/user-attachments/assets/356b1330-7e6d-4341-acf0-d18b79519ff5" />
+
+2. Действия для Tox
+
+Tox.ini
+
+https://github.com/world12hub/ansible/blob/main/05-testing/vector/tox.ini
+
+tox-requirements.txt
+
+https://github.com/world12hub/ansible/blob/main/05-testing/vector/tox-requirements.txt
+
+Сценарий:
+
+https://github.com/world12hub/ansible/tree/main/05-testing/vector/molecule/tox
+
+<deatails>
+<summary>Вывод команды tox<summary>
+
+   
 После выполнения у вас должно получится два сценария molecule и один tox.ini файл в репозитории. Не забудьте указать в ответе теги решений Tox и Molecule заданий. В качестве решения пришлите ссылку на  ваш репозиторий и скриншоты этапов выполнения задания. 
+
 
 ## Необязательная часть
 
