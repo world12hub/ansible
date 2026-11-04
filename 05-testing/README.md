@@ -43,7 +43,12 @@
 
 ### Ответ:
 
-Ссылка на репозиторий: 
+**Ссылка на репозиторий: **
+
+https://github.com/world12hub/ansible/tree/main/05-testing/vector/molecule/default
+
+<details>
+<summary>Вывод команды molecule test -s default</summary>
 
 ### Tox
 
