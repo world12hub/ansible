@@ -6,4 +6,4 @@
   tasks:
     - name: "Include vector role"
       include_role:
-        name: "/mnt/c/Users/rlyst/Netology/08-ansible-05-testing/vector"
+        name: "/home/adminsk/ansible/05-testing/vector"
