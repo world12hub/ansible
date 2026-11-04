@@ -51,6 +51,7 @@ https://github.com/world12hub/ansible/tree/main/05-testing/vector/molecule/defau
 <summary>Вывод команды molecule test -s default</summary>
 
 ```text
+
 INFO     default ➜ discovery: scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
 INFO     default ➜ prerun: Performing prerun with role_name_check=0...
 INFO     default ➜ dependency: Executing
@@ -407,6 +408,7 @@ default ➜ destroy: Executed: Successful
 
 SCENARIO RECAP                                                                 
 default                   : actions=12  successful=7  disabled=2  skipped=0  missing=4  failed=0
+
 ...
 
 ### Tox
