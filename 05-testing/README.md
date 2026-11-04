@@ -407,6 +407,7 @@ default ➜ destroy: Executed: Successful
 
 SCENARIO RECAP                                                                 
 default                   : actions=12  successful=7  disabled=2  skipped=0  missing=4  failed=0
+
 ```
 
 ### Tox
