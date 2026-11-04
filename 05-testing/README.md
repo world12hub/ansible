@@ -408,8 +408,8 @@ default ➜ destroy: Executed: Successful
 
 SCENARIO RECAP                                                                 
 default                   : actions=12  successful=7  disabled=2  skipped=0  missing=4  failed=0
-
-...
+```
+</details>
 
 ### Tox
 
@@ -784,7 +784,8 @@ tox                       : actions=6  successful=5  disabled=0  skipped=0  miss
 
   py312-ansible30: OK (178.93=setup[14.86]+cmd[0.00,0.50,163.56] seconds)
   congratulations :) (179.02 seconds)
-...
+```
+</details>
    
 После выполнения у вас должно получится два сценария molecule и один tox.ini файл в репозитории. Не забудьте указать в ответе теги решений Tox и Molecule заданий. В качестве решения пришлите ссылку на  ваш репозиторий и скриншоты этапов выполнения задания. 
 
