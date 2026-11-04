@@ -50,7 +50,7 @@ https://github.com/world12hub/ansible/tree/main/05-testing/vector/molecule/defau
 <details>
 <summary>Вывод команды molecule test -s default</summary>
 
-```
+```text
 INFO     default ➜ discovery: scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
 INFO     default ➜ prerun: Performing prerun with role_name_check=0...
 INFO     default ➜ dependency: Executing
@@ -445,7 +445,7 @@ https://github.com/world12hub/ansible/tree/main/05-testing/vector/molecule/tox
 <details>
 <summary>Вывод команды tox<summary>
 
-```
+```text
   py312-ansible30: remove tox env folder /home/adminsk/ansible/05-testing/vector/.tox/py312-ansible30
 py312-ansible30: install_deps> python -I -m pip install -r tox-requirements.txt
 py312-ansible30: commands[0]> python --version
