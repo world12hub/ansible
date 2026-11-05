@@ -43,8 +43,8 @@
 
 ### Ответ:
 
-(details)
-(summary)`pip install -r requirements.txt`(/summary)
+<details>
+<summary>`pip install -r requirements.txt`</summary>
 ```text
 Collecting jinja2>=3.1.0
   Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
@@ -67,7 +67,7 @@ Collecting pycparser
 Installing collected packages: typing-extensions, resolvelib, PyYAML, pycparser, packaging, MarkupSafe, jinja2, cffi, cryptography
 Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.0.2 jinja2-3.1.6 packaging-26.3 pycparser-3.11 resolvelib-1.2.1 typing-extensions-4.16.0
 ```
-(/details)
+</details>
 7. Запустите настройку окружения `. hacking/env-setup`.
 8. Если все шаги прошли успешно — выйдите из виртуального окружения `deactivate`.
 9. Ваше окружение настроено. Чтобы запустить его, нужно находиться в директории `ansible` и выполнить конструкцию `. venv/bin/activate && . hacking/env-setup`.
