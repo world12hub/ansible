@@ -4,7 +4,7 @@
 
 1. Создайте пустой публичный репозиторий в своём любом проекте: `my_own_collection`.
 
-### Ответ:
+**Ответ:**
 
 Создан публичный репозиторий: [my_own_collection](https://github.com/world12hub/my_own_collection)
 
@@ -12,7 +12,7 @@
 
 2. Скачайте репозиторий Ansible: `git clone https://github.com/ansible/ansible.git` по любому, удобному вам пути.
 
-### Ответ:
+**Ответ:**
 
 `git clone https://github.com/ansible/ansible.git`
 
@@ -22,7 +22,7 @@
 
 3. Зайдите в директорию Ansible: `cd ansible`.
 
-### Ответ:
+**Ответ:**
 
 `cd ansible`
 `ls`
@@ -33,7 +33,7 @@
 
 4. Создайте виртуальное окружение: `python3 -m venv venv`.
 
-### Ответ:
+**Ответ:**
 
 <img width="562" height="18" alt="image" src="https://github.com/user-attachments/assets/40ffff56-b42e-4264-ba73-59ce85e9873f" />
 
@@ -41,7 +41,7 @@
 
 5. Активируйте виртуальное окружение: `. venv/bin/activate`. Дальнейшие действия производятся только в виртуальном окружении.
 
-### Ответ:
+**Ответ:**
 
 `. venv/bin/activate`
 
@@ -51,7 +51,7 @@
 
 6. Установите зависимости `pip install -r requirements.txt`.
 
-### Ответ:
+**Ответ:**
 
 <details>
 <summary>pip install -r requirements.txt</summary>
@@ -83,7 +83,7 @@ Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.
 
 7. Запустите настройку окружения `. hacking/env-setup`.
 
-### Ответ:
+**Ответ:**
 
 `. hacking/env-setup`
 
@@ -93,7 +93,7 @@ Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.
 
 8. Если все шаги прошли успешно — выйдите из виртуального окружения `deactivate`.
 
-### Ответ:
+**Ответ:**
 
 `deactivate`
 
@@ -103,7 +103,7 @@ Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.
 
 9. Ваше окружение настроено. Чтобы запустить его, нужно находиться в директории `ansible` и выполнить конструкцию `. venv/bin/activate && . hacking/env-setup`.
 
-### Ответ:
+**Ответ:**
 
 `. venv/bin/activate && . hacking/env-setup`
 
