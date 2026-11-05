@@ -107,7 +107,7 @@ Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.
   
   `. venv/bin/activate && . hacking/env-setup`
 
-![Uploading image.png…]()
+<img width="771" height="250" alt="image" src="https://github.com/user-attachments/assets/7c3f1395-0164-485c-a23b-c98267614818" />
 
 ## Основная часть
 
