@@ -8,6 +8,8 @@
 
 Создан публичный репозиторий: [my_own_collection](https://github.com/world12hub/my_own_collection)
 
+---
+
 2. Скачайте репозиторий Ansible: `git clone https://github.com/ansible/ansible.git` по любому, удобному вам пути.
 
 ### Ответ:
@@ -15,6 +17,8 @@
 `git clone https://github.com/ansible/ansible.git`
 
 <img width="751" height="98" alt="image" src="https://github.com/user-attachments/assets/595da56a-bfa7-4257-a306-8c5331c2c895" />
+
+---
 
 3. Зайдите в директорию Ansible: `cd ansible`.
 
@@ -25,11 +29,15 @@
 
 <img width="808" height="58" alt="image" src="https://github.com/user-attachments/assets/90cf0f22-cea3-461e-aacc-026d79bb15a1" />
 
+---
+
 4. Создайте виртуальное окружение: `python3 -m venv venv`.
 
 ### Ответ:
 
 <img width="562" height="18" alt="image" src="https://github.com/user-attachments/assets/40ffff56-b42e-4264-ba73-59ce85e9873f" />
+
+---
 
 5. Активируйте виртуальное окружение: `. venv/bin/activate`. Дальнейшие действия производятся только в виртуальном окружении.
 
@@ -38,6 +46,8 @@
 `. venv/bin/activate`
 
 <img width="594" height="48" alt="image" src="https://github.com/user-attachments/assets/9740fca0-2b1c-4e71-9097-c246410c3fde" />
+
+---
 
 6. Установите зависимости `pip install -r requirements.txt`.
 
@@ -68,7 +78,9 @@ Installing collected packages: typing-extensions, resolvelib, PyYAML, pycparser,
 Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.0.2 jinja2-3.1.6 packaging-26.3 pycparser-3.11 resolvelib-1.2.1 typing-extensions-4.16.0
 ```
 </details>
-  
+
+---
+
 7. Запустите настройку окружения `. hacking/env-setup`.
 
 ### Ответ:
@@ -77,6 +89,8 @@ Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.
 
 <img width="987" height="239" alt="image" src="https://github.com/user-attachments/assets/4bf8ff29-b436-4e04-a9e5-d141eaa1f679" />
 
+---
+
 8. Если все шаги прошли успешно — выйдите из виртуального окружения `deactivate`.
 
 ### Ответ:
@@ -84,6 +98,8 @@ Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.
 `deactivate`
 
 <img width="576" height="46" alt="image" src="https://github.com/user-attachments/assets/9c86c0a2-c2ab-4b6f-b424-2f0690092f14" />
+
+---
 
 9. Ваше окружение настроено. Чтобы запустить его, нужно находиться в директории `ansible` и выполнить конструкцию `. venv/bin/activate && . hacking/env-setup`.
 
