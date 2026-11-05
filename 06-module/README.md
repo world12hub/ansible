@@ -115,6 +115,12 @@ Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.
 
 **Шаг 1.** В виртуальном окружении создайте новый `my_own_module.py` файл.
 
+**Ответ:**
+
+`nano my_own_module.py`
+
+<img width="991" height="77" alt="image" src="https://github.com/user-attachments/assets/3179decd-00e5-41df-8552-0be5cea152d1" />
+
 **Шаг 2.** Наполните его содержимым:
 
 ```python
@@ -254,6 +260,13 @@ if __name__ == '__main__':
     main()
 ```
 Или возьмите это наполнение [из статьи](https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#creating-a-module).
+
+
+**Ответ:**
+
+`cat my_own_module.py`
+
+<img width="828" height="498" alt="image" src="https://github.com/user-attachments/assets/dfd29a05-c11d-4ef5-b0c2-8f04c892ca11" />
 
 **Шаг 3.** Заполните файл в соответствии с требованиями Ansible так, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре `path`, с содержимым, определённым в параметре `content`.
 
