@@ -3,11 +3,71 @@
 ## Подготовка к выполнению
 
 1. Создайте пустой публичный репозиторий в своём любом проекте: `my_own_collection`.
+
+### Ответ:
+
+Создан публичный репозиторий: [my_own_collection](https://github.com/world12hub/my_own_collection)
+
 2. Скачайте репозиторий Ansible: `git clone https://github.com/ansible/ansible.git` по любому, удобному вам пути.
+
+### Ответ:
+
+`git clone https://github.com/ansible/ansible.git`
+
+<img width="751" height="98" alt="image" src="https://github.com/user-attachments/assets/595da56a-bfa7-4257-a306-8c5331c2c895" />
+
 3. Зайдите в директорию Ansible: `cd ansible`.
+
+### Ответ:
+
+`cd ansible`
+`ls`
+
+<img width="808" height="58" alt="image" src="https://github.com/user-attachments/assets/90cf0f22-cea3-461e-aacc-026d79bb15a1" />
+
 4. Создайте виртуальное окружение: `python3 -m venv venv`.
+
+### Ответ:
+
+<img width="562" height="18" alt="image" src="https://github.com/user-attachments/assets/40ffff56-b42e-4264-ba73-59ce85e9873f" />
+
 5. Активируйте виртуальное окружение: `. venv/bin/activate`. Дальнейшие действия производятся только в виртуальном окружении.
+
+### Ответ:
+
+`. venv/bin/activate`
+
+<img width="594" height="48" alt="image" src="https://github.com/user-attachments/assets/9740fca0-2b1c-4e71-9097-c246410c3fde" />
+
 6. Установите зависимости `pip install -r requirements.txt`.
+
+### Ответ:
+
+(details)
+(summary)`pip install -r requirements.txt`(/summary)
+```text
+Collecting jinja2>=3.1.0
+  Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Collecting PyYAML>=5.1
+  Using cached pyyaml-6.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (770 kB)
+Collecting cryptography
+  Using cached cryptography-50.0.2-cp39-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+Collecting packaging
+  Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Collecting resolvelib<2.0.0,>=0.8.0
+  Downloading resolvelib-1.2.1-py3-none-any.whl (18 kB)
+Collecting MarkupSafe>=2.0
+  Using cached markupsafe-3.0.4-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (20 kB)
+Collecting cffi>=2.0.0
+  Using cached cffi-2.1.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (218 kB)
+Collecting typing-extensions>=4.13.2
+  Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Collecting pycparser
+  Using cached pycparser-3.11-py3-none-any.whl (51 kB)
+Installing collected packages: typing-extensions, resolvelib, PyYAML, pycparser, packaging, MarkupSafe, jinja2, cffi, cryptography
+Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.0.2 jinja2-3.1.6 packaging-26.3 pycparser-3.11 resolvelib-1.2.1 typing-extensions-4.16.0
+```
+(/details)
 7. Запустите настройку окружения `. hacking/env-setup`.
 8. Если все шаги прошли успешно — выйдите из виртуального окружения `deactivate`.
 9. Ваше окружение настроено. Чтобы запустить его, нужно находиться в директории `ansible` и выполнить конструкцию `. venv/bin/activate && . hacking/env-setup`.
