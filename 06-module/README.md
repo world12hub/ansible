@@ -68,9 +68,30 @@ Installing collected packages: typing-extensions, resolvelib, PyYAML, pycparser,
 Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.0.2 jinja2-3.1.6 packaging-26.3 pycparser-3.11 resolvelib-1.2.1 typing-extensions-4.16.0
 ```
 </details>
+  
 7. Запустите настройку окружения `. hacking/env-setup`.
+
+### Ответ:
+
+`. hacking/env-setup`
+
+<img width="987" height="239" alt="image" src="https://github.com/user-attachments/assets/4bf8ff29-b436-4e04-a9e5-d141eaa1f679" />
+
 8. Если все шаги прошли успешно — выйдите из виртуального окружения `deactivate`.
+
+### Ответ:
+
+`deactivate`
+
+<img width="576" height="46" alt="image" src="https://github.com/user-attachments/assets/9c86c0a2-c2ab-4b6f-b424-2f0690092f14" />
+
 9. Ваше окружение настроено. Чтобы запустить его, нужно находиться в директории `ansible` и выполнить конструкцию `. venv/bin/activate && . hacking/env-setup`.
+
+### Ответ:
+
+`. venv/bin/activate && . hacking/env-setup`
+
+![Uploading image.png…]()
 
 ## Основная часть
 
