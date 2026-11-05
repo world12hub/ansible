@@ -44,7 +44,7 @@
 ### Ответ:
 
 <details>
-<summary>`pip install -r requirements.txt`</summary>
+<summary>pip install -r requirements.txt</summary>
 ```text
 Collecting jinja2>=3.1.0
   Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
