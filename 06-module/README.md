@@ -119,7 +119,8 @@ Successfully installed MarkupSafe-3.0.4 PyYAML-6.0.3 cffi-2.1.1 cryptography-50.
 
 `nano my_own_module.py`
 
-<img width="991" height="77" alt="image" src="https://github.com/user-attachments/assets/3179decd-00e5-41df-8552-0be5cea152d1" />
+<img width="393" height="39" alt="image" src="https://github.com/user-attachments/assets/52febbc0-8c2b-43dd-9e9d-19172c90a49f" />
+
 
 **Шаг 2.** Наполните его содержимым:
 
