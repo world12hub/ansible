@@ -271,11 +271,40 @@ if __name__ == '__main__':
 
 **Шаг 3.** Заполните файл в соответствии с требованиями Ansible так, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре `path`, с содержимым, определённым в параметре `content`.
 
+
 **Шаг 4.** Проверьте module на исполняемость локально.
+
+**Ответ:**
+
+`python3 -m py_compile my_own_module.py && echo OK`
+
+<img width="991" height="46" alt="image" src="https://github.com/user-attachments/assets/3a6a057e-9e33-4fbc-9376-e555d8ea246c" />
 
 **Шаг 5.** Напишите single task playbook и используйте module в нём.
 
+**Ответ:**
+
+```
+---
+- name: Test module
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Create a text file with my_test module
+      my_own_module:
+        path: /tmp/ansible_demo.txt
+        content: "hello world\n"
+```
+
 **Шаг 6.** Проверьте через playbook на идемпотентность.
+
+**Ответ:**
+
+ANSIBLE_LIBRARY="$PWD" ansible-playbook -i localhost, ../../../site.yml
+
+<img width="1036" height="114" alt="image" src="https://github.com/user-attachments/assets/5be0da90-ab1a-4e4b-846a-01327537779f" />
 
 **Шаг 7.** Выйдите из виртуального окружения.
 
